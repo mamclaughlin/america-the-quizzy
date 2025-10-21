@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
+import PhotoAttribution from "./components/PhotoAttribution";
 
 // Sans-serif font for body text (clean, readable)
 const inter = Inter({
@@ -32,7 +33,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${merriweather.variable} antialiased`}
       >
+        {/* Americana atmospheric overlays */}
+        <div id="grain-overlay" aria-hidden="true" />
+        <div id="sun-fade" aria-hidden="true" />
         {children}
+        <PhotoAttribution />
       </body>
     </html>
   );

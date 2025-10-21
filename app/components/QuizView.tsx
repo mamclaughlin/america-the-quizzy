@@ -92,7 +92,7 @@ export default function QuizView({
 
         {/* Question Card */}
         <div
-          className={`bg-white/50 backdrop-blur-sm rounded-lg shadow-lg p-8 md:p-12 space-y-6 transition-opacity duration-300 ${
+          className={`bg-white/80 rounded-lg shadow-lg p-8 md:p-12 space-y-6 transition-opacity duration-300 ${
             isTransitioning ? 'opacity-0' : 'opacity-100'
           }`}
         >

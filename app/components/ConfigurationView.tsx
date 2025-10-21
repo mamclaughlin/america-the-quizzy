@@ -11,7 +11,7 @@ interface ConfigurationViewProps {
 }
 
 export default function ConfigurationView({ onStartQuiz, loading, error }: ConfigurationViewProps) {
-  const [numQuestions, setNumQuestions] = useState<number>(DEFAULT_QUESTIONS);
+  const [numQuestions, setNumQuestions] = useState<number | ''>(DEFAULT_QUESTIONS);
   const [category, setCategory] = useState<string>('Any');
   const [subcategory, setSubcategory] = useState<string>('Any');
   const [validationError, setValidationError] = useState<string>('');
@@ -23,7 +23,8 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
 
   const validateAndSubmit = () => {
     // Validation
-    if (numQuestions < MIN_QUESTIONS || numQuestions > MAX_QUESTIONS) {
+    const numQuestionsValue = typeof numQuestions === 'number' ? numQuestions : parseInt(String(numQuestions), 10);
+    if (isNaN(numQuestionsValue) || numQuestionsValue < MIN_QUESTIONS || numQuestionsValue > MAX_QUESTIONS) {
       setValidationError(`Number of questions must be between ${MIN_QUESTIONS} and ${MAX_QUESTIONS}`);
       return;
     }
@@ -41,7 +42,7 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
     setValidationError('');
     
     const config: QuizConfig = {
-      number_of_questions: numQuestions,
+      number_of_questions: numQuestionsValue,
       category,
       subcategory,
     };
@@ -59,14 +60,14 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
           <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-2">
             America the Quizzy
           </h1>
-          <p className="text-warm-beige text-lg md:text-xl">
+          <p className="text-charcoal text-lg md:text-xl font-medium">
             US Citizenship Test Practice
           </p>
         </div>
 
         {/* Form */}
         <form
-          className="bg-white/50 backdrop-blur-sm rounded-lg shadow-lg p-8 space-y-6"
+          className="bg-white/80 rounded-lg shadow-lg p-8 space-y-6"
           onSubmit={(e) => {
             e.preventDefault();
             validateAndSubmit();
@@ -84,7 +85,23 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
               min={MIN_QUESTIONS}
               max={MAX_QUESTIONS}
               value={numQuestions}
-              onChange={(e) => setNumQuestions(parseInt(e.target.value) || MIN_QUESTIONS)}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value === '') {
+                  setNumQuestions('');
+                } else {
+                  const numValue = parseInt(value, 10);
+                  if (!isNaN(numValue)) {
+                    setNumQuestions(numValue);
+                  }
+                }
+              }}
+              onBlur={(e) => {
+                const value = e.target.value;
+                if (value === '' || isNaN(parseInt(value, 10))) {
+                  setNumQuestions(MIN_QUESTIONS);
+                }
+              }}
               className="w-full px-4 py-3 border-2 border-warm-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-dusty-blue focus:border-transparent text-charcoal"
               disabled={loading}
             />
