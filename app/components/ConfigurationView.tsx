@@ -67,7 +67,7 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
 
         {/* Form */}
         <form
-          className="bg-white/80 rounded-lg shadow-lg p-8 space-y-6"
+          className="bg-white/95 rounded-lg shadow-lg p-8 space-y-6"
           onSubmit={(e) => {
             e.preventDefault();
             validateAndSubmit();
@@ -105,7 +105,7 @@ export default function ConfigurationView({ onStartQuiz, loading, error }: Confi
               className="w-full px-4 py-3 border-2 border-warm-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-dusty-blue focus:border-transparent text-charcoal"
               disabled={loading}
             />
-            <p className="mt-1 text-sm text-warm-beige">
+            <p className="mt-2 text-base text-charcoal font-medium">
               Choose between {MIN_QUESTIONS} and {MAX_QUESTIONS} questions
             </p>
           </div>

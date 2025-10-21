@@ -15,7 +15,7 @@ export default function ResultsView({ results, onRestart, loading }: ResultsView
     <div className="min-h-screen px-4 py-8">
       <div className="w-full max-w-4xl mx-auto space-y-8">
         {/* Score Summary */}
-        <div className="bg-white/80 rounded-lg shadow-lg p-8 text-center space-y-4" role="region" aria-label="Quiz results summary">
+        <div className="bg-white/95 rounded-lg shadow-lg p-8 text-center space-y-4" role="region" aria-label="Quiz results summary">
           <h1 className="text-3xl md:text-4xl font-bold text-charcoal">
             Quiz Complete!
           </h1>
@@ -57,7 +57,7 @@ export default function ResultsView({ results, onRestart, loading }: ResultsView
             return (
               <article
                 key={index}
-                className={`bg-white/80 rounded-lg shadow-md p-6 space-y-3 border-l-4 ${
+                className={`bg-white/95 rounded-lg shadow-md p-6 space-y-3 border-l-4 ${
                   isCorrect ? 'border-sage-green' : 'border-soft-red'
                 }`}
                 aria-label={`Question ${index + 1} - ${isCorrect ? 'Answered correctly' : 'Answered incorrectly'}`}
