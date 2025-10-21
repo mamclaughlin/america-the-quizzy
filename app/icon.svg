@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="#6B8E9E"/>
+  
+  <!-- Star (representing Americana/citizenship theme) -->
+  <path d="M32 18L34.472 26.944H43.854L36.191 32.112L38.663 41.056L32 35.888L25.337 41.056L27.809 32.112L20.146 26.944H29.528L32 18Z" fill="#F5F3EF"/>
+  
+  <!-- Accent bottom stripe -->
+  <rect y="52" width="64" height="12" rx="0 0 12 12" fill="#B85C5C" fill-opacity="0.3"/>
+</svg>
